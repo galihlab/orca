@@ -143,7 +143,7 @@ jobs:
       - name: Package Linux Desktop (.deb & .AppImage)
         if: steps.check_release.outputs.skip != 'true'
         run: |
-          node config/scripts/ensure-native-runtime.mjs --runtime=electron
+          pnpm run ensure:electron-runtime
           pnpm exec electron-builder --config config/electron-builder.config.cjs --linux AppImage deb --x64 --publish never
 
       - name: Prepare Release Artifacts
